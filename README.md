@@ -22,7 +22,7 @@
 
 ### Installation
 
-**Prerequisites:** Ensure PHP 8.1 or higher is installed on your system, if you have PHP 7 please follow the locally steps. <br/>
+**Prerequisites:** Ensure PHP 8.1 or higher is installed on your system, if you have PHP 7 please follow the manually steps. <br/>
 To install the SDK in your project, you need have installed [Composer](https://getcomposer.org/download/).
 
 **Command:** Run the following Composer command:
@@ -31,7 +31,7 @@ To install the SDK in your project, you need have installed [Composer](https://g
 composer require mymoid/api
 ```
 
-Or, if you prefer, you could use locally following these steps:
+Or, if you prefer, you could do it manually following these steps:
 
 1. **Repository Cloning:** Begin by cloning this [repository](https://github.com/mymoid/mymoid-php/tree/main) to your local machine, if you have PHP 7 use this [repository](https://github.com/mymoid/mymoid-php/tree/php-7).
 
