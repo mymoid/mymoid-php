@@ -1,5 +1,8 @@
 {
   "name": "mymoid/api",
+  "type": "library",
+  "description": "MYMOID PHP SDK",
+  "license": "MIT",
   "require": {
     "nyholm/psr7": "^1.8",
     "php-http/curl-client": "^2.3"
