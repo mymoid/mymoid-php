@@ -4,6 +4,7 @@
   "description": "MYMOID PHP SDK",
   "license": "MIT",
   "require": {
+    "php": ">=8.1",
     "nyholm/psr7": "^1.8",
     "php-http/curl-client": "^2.3"
   },
