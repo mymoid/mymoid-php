@@ -78,9 +78,35 @@ trait MymoidParser
      */
     public function toJson()
     {
-        $properties_array = $this->getObjectProperties(self::class);
+        $reflectionClass = new \ReflectionClass(self::class);
+        $properties = $reflectionClass->getProperties();
 
-        return json_encode($properties_array);
+        $propertiesArray = [];
+        foreach ($properties as $property) {
+            $property->setAccessible(true); // Ensure property is accessible
+            $name = $property->getName();
+            $value = $property->getValue($this);
+
+            // Format expiration_date to ISO 8601 string if it's a DateTime object
+            if ($value instanceof \DateTime) {
+                $value = $value->format(\DateTime::ATOM); // ISO 8601 format
+            }
+
+            // Include only properties that are not null or optional properties that are explicitly set to zero
+            if ($value !== null || (is_numeric($value) && $value === 0)) {
+                $propertiesArray[$name] = $value;
+            }
+        }
+
+        // Ensure proper encoding, including handling zero values
+        $jsonEncodedProperties = json_encode($propertiesArray, JSON_PRESERVE_ZERO_FRACTION);
+
+        // Check for JSON encoding errors
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            throw new \RuntimeException('Failed to encode properties to JSON: ' . json_last_error_msg());
+        }
+
+        return $jsonEncodedProperties;
     }
 
     /**
